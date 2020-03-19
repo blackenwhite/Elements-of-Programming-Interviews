@@ -1,0 +1,186 @@
+Arrays class contains overloaded methods that support primitive data types. These methods are:
+public static <T> List<T> asList(T… a)
+public static void sort(int[] a)
+public static int binarySearch(int[] a, int k)
+public static boolean equals(int[] a, int[] a2)
+
+-----------------------------------------------------------------------------------
+asList example
+
+package com.journaldev.examples;
+
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Java Arrays Example Program
+ * 
+ * @author pankaj
+ *
+ */
+
+public class ArraysAsListExample {
+	
+	public static void main(String[] args) {
+		
+		String[] strings = {"one", "two", "three", "four", "five"};
+		// strings array is converted into a List
+		List<String> list = Arrays.asList(strings);
+		System.out.println(list);
+	}
+}
+
+
+-------------------------------------------------
+
+Java Arrays provides sort method that sorts the element of specified array and also sorts the specified range of the given array into ascending order.
+Below is a simple program for sorting arrays in java.
+
+
+package com.journaldev.examples;
+
+import java.util.Arrays;
+
+/**
+ * Java Arrays Example Program
+ * 
+ * @author pankaj
+ *
+ */
+public class ArraysSortExample {
+
+	public static void main(String[] args) {
+		
+		// Sorting Character
+		char[] chars = {'B', 'D', 'C', 'A', 'E'};
+		Arrays.sort(chars);
+		System.out.print("Sorted Characters : ");
+		for (char character : chars) {
+			System.out.print(character+" ");
+		}
+		
+		// Sorting Integer
+		int[] integers = {5, 2, 1, 4, 3};
+		Arrays.sort(integers);
+		System.out.print("\nSorted Integers : ");
+		for (int i : integers) {
+			System.out.print(i+" ");
+		}
+		
+		// Sorting Specific Range of Integers
+		int[] ints = {5, 2, 1, 4, 3, 9, 6, 8, 7, 10};
+		int fromIndex = 2;
+		int toIndex = 7;
+		Arrays.sort(ints, fromIndex, toIndex);
+		System.out.print("\nSorted Integers of Specific Range : ");
+		for (int i : ints) {
+			System.out.print(i+" ");
+		}
+	}
+
+}
+
+Output of the above program is:
+Sorted Characters : A B C D E 
+Sorted Integers : 1 2 3 4 5 
+Sorted Integers of Specific Range : 5 2 1 3 4 6 9 8 7 10
+
+-------------------------------------------------------------------------------------
+Compare Nested Arrays
+What if the array is inside of another array? Will Arrays equal method is capable to compare nested arrays?
+
+Let’s have a look at the below example program.
+
+
+package com.journaldev.examples;
+
+import java.util.Arrays;
+
+/**
+ * Java Arrays Example Program
+ * 
+ * @author pankaj
+ *
+ */
+public class ArraysNestedArrayExample {
+
+	public static void main(String[] args) {
+		// Compare two nested arrays of type integer which are equal
+		int[] a1 = { 1, 2, 3 };
+		int[] a2 = { 1, 2, 3 };
+		Object[] b1 = {a1};
+		Object[] b2 = {a2};
+		boolean equal = Arrays.equals(b1, b2);
+		
+if (equal) {
+			System.out.println("Arrays b1 and b2 are equal with Result : " + equal);
+		} else {
+			System.out.println("Arrays b1 and b2 are not equal with Result : " + equal);
+		}
+
+	}
+
+}
+Output of above program is:
+
+
+Arrays b1 and b2 are not equal with Result : false
+
+We can see that the output of the program is false despite the two arrays are equal and contains same number of elements.
+Actually equal method is not able to compare nested arrays, for that Arrays have another method called deepEquals.
+
+Let’s have a look at the below example program.
+
+
+package com.journaldev.examples;
+
+import java.util.Arrays;
+
+/**
+ * Java Arrays Example Program
+ * 
+ * @author pankaj
+ *
+ */
+public class ArraysNestedArrayExample {
+
+	public static void main(String[] args) {
+		// Compare two nested arrays of type integer which are equal
+		int[] a1 = { 1, 2, 3 };
+		int[] a2 = { 1, 2, 3 };
+		Object[] b1 = {a1};
+		Object[] b2 = {a2};
+		boolean equal = Arrays.deepEquals(b1, b2);
+		
+if (equal) {
+			System.out.println("Arrays b1 and b2 are equal with Result : " + equal);
+		} else {
+			System.out.println("Arrays b1 and b2 are not equal with Result : " + equal);
+		}
+
+	}
+
+}
+Output of above arrays equals program is:
+
+
+Arrays b1 and b2 are equal with Result : true
+-------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
