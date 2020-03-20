@@ -1,0 +1,26 @@
+//Given an array A of n elements and a permutation P, apply P to A.
+// Java solution 
+// author : Nabajyoti Majumdar
+
+A=['a','b','c','d']
+P=[2,3,0,1]
+A_=[None]*len(A)
+for i in range(len(P)):
+    A_[P[i]]=A[i]
+
+n=len(A)
+for i in range(n):
+    element=A[i]
+    ele_pos=i
+    
+    shift_pos=P[ele_pos]
+    next_shift=P[shift_pos]
+    
+    while shift_pos!=-1 and i < n:
+        temp=A[shift_pos]
+        A[shift_pos]=element
+        P[ele_pos]=-1
+        ele_pos=shift_pos
+        element=temp
+        shift_pos=next_shift
+        next_shift=P[shift_pos]
